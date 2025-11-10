@@ -1,0 +1,3 @@
+// tailwind.config.ts
+// ...
+plugins: [require("@tailwindcss/typography")],
