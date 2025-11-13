@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Research – Ahmadi Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="logo-row">
+          <a href="index.html">
+            <img src="public/logo.png" alt="Ahmadi Research Logo" class="logo-img" />
+          </a>
+        </div>
+        <nav class="nav-links">
+          <a href="research.html">Research</a>
+          <a href="approach.html">Approach</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="section section--light">
+      <div class="container">
+        <div class="section-title-row">
+          <div>
+            <div class="section-kicker">Research</div>
+            <h1 class="section-title">Equity & macro projects</h1>
+          </div>
+          <p class="section-subtitle">
+            Decks, notes, and experiments that explore single-name stories, macro context, ETF valuation, and methods.
+          </p>
+        </div>
+
+        <!-- === START: RESEARCH PROJECTS LIST === -->
+        <div class="cards-grid">
+          <!-- Palantir thesis -->
+          <a href="Palantir%20Technologies%20Inc.pdf" target="_blank" rel="noopener" class="work-card">
+            <div class="work-card-inner">
+              <div class="work-label">Equity thesis</div>
+              <div class="work-title">Beyond the buzz: why Palantir’s valuation may not add up</div>
+              <p class="work-desc">
+                Deep dive on PLTR’s business model, government vs commercial mix, and bubble-like multiples versus SaaS
+                peers. Argues current pricing bakes in very optimistic scenarios.
+              </p>
+              <div class="work-meta">
+                <span>Slide deck · 2025</span>
+                <span class="work-link">Open PDF ↗</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- ETF valuation spreads -->
+          <div class="work-card">
+            <div class="work-card-inner">
+              <div class="work-label">Macro & factors</div>
+              <div class="work-title">US vs global ETF valuation spreads</div>
+              <p class="work-desc">
+                Compares valuation metrics and sector tilts between US, Europe, and EM indices to see how much US
+                outperformance is multiple expansion versus fundamentals.
+              </p>
+              <div class="work-meta">
+                <span>Python + Excel workbook</span>
+                <span class="work-link">Coming online soon</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monte Carlo methods -->
+          <div class="work-card">
+            <div class="work-card-inner">
+              <div class="work-label">Methods</div>
+              <div class="work-title">Monte Carlo for index mixes</div>
+              <p class="work-desc">
+                Uses historical distributions to simulate thousands of portfolio paths, estimating drawdowns and upside
+                for different index mixes across regimes.
+              </p>
+              <div class="work-meta">
+                <span>Simulation project</span>
+                <span class="work-link">Summary coming soon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- === END: RESEARCH PROJECTS LIST === -->
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Ahmadi Research. Nothing here is investment advice.</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="approach.html">Approach</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
