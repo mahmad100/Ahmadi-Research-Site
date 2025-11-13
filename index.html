@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ahmadi Research Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #02030a;
+      --accent: #00d4ff;
+      --accent-soft: rgba(0, 212, 255, 0.12);
+      --card-bg: rgba(7, 10, 26, 0.96);
+      --text-main: #f5f7ff;
+      --text-muted: #9ca3c4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #111633 0, #02030a 55%, #000 100%);
+      color: var(--text-main);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* STARFIELD BACKGROUND */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08) 0, transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(0,212,255,0.08) 0, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(153,102,255,0.08) 0, transparent 40%);
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      z-index: 0;
+    }
+
+    /* *** MAIN CONTENT BEHIND THE DOOR *** */
+
+    .hub {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      padding: 32px;
+      background:
+        radial-gradient(circle at 0 0, rgba(0,212,255,0.22), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(153,102,255,0.18), transparent 55%),
+        rgba(4, 7, 22, 0.96);
+      border: 1px solid rgba(103, 118, 255, 0.45);
+      border-radius: 28px;
+      box-shadow:
+        0 26px 70px rgba(0, 0, 0, 0.9),
+        0 0 100px rgba(76, 111, 255, 0.3);
+
+      opacity: 0.25;
+      transform: scale(0.95);
+      filter: blur(6px);
+      transition: 0.8s ease-out;
+    }
+
+    .hub.revealed {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+
+    .hub-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .hub-header div {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hub-header h1 {
+      font-size: 1.9rem;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hub-header p {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .card {
+      text-decoration: none;
+      color: var(--text-main);
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(14px);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 212, 255, 0.55);
+      background: linear-gradient(135deg, rgba(0,212,255,0.16), rgba(7,10,26,0.98));
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      flex: 1;
+    }
+
+    /* *** STAR WARS DOOR *** */
+
+    .door-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #050716 0, #000 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      overflow: hidden;
+      transition: opacity 1s ease-out;
+    }
+
+    .door-overlay.open {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .door-track {
+      position: relative;
+      width: 600px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .door-panel {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background: #070b18;
+      border: 1px solid rgba(140,150,190,0.6);
+      box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(0,212,255,0.25);
+      transition: transform 1.2s cubic-bezier(0.16, 0.84, 0.18, 1.04);
+    }
+
+    .door-panel.left {
+      left: 0;
+      border-radius: 18px 4px 4px 18px;
+    }
+
+    .door-panel.right {
+      right: 0;
+      border-radius: 4px 18px 18px 4px;
+    }
+
+    .door-overlay.open .left {
+      transform: translateX(-120%);
+    }
+
+    .door-overlay.open .right {
+      transform: translateX(120%);
+    }
+
+    .door-center {
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .intro-line {
+      color: #9ca3c4;
+      margin-bottom: 10px;
+      letter-spacing: 0.18em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .door-title {
+      font-size: 1.4rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .door-subtitle {
+      margin-top: 8px;
+      color: var(--text-muted);
+    }
+
+    .lock-circle {
+      margin: 14px auto;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,212,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 2rem;
+      box-shadow:
+        0 0 20px rgba(0,212,255,0.5),
+        0 0 40px rgba(0,212,255,0.3);
+    }
+
+    .door-btn {
+      margin-top: 8px;
+      padding: 10px 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,212,255,0.7);
+      background: rgba(0,212,255,0.15);
+      color: white;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: 0.2s ease;
+    }
+
+    .door-btn:hover {
+      background: rgba(0,212,255,0.3);
+      box-shadow: 0 0 16px rgba(0,212,255,0.5);
+      transform: translateY(-2px);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+
+  <!-- YOUR CONTENT BEHIND THE DOOR -->
+  <main class="hub" id="hub">
+    <div class="hub-header">
+      <div>Ahmadi Research</div>
+      <h1>Equity Research Hub</h1>
+      <p>Macro, single names, and frameworks that guide my investment thinking</p>
+    </div>
+
+    <section class="cards">
+      <a href="#single" class="card">
+        <div class="card-label">Track 01</div>
+        <div class="card-title">Single-Name Deep Dives</div>
+        <div class="card-desc">Palantir, Meta, Nvidia, Tesla, etc.</div>
+      </a>
+
+      <a href="#macro" class="card">
+        <div class="card-label">Track 02</div>
+        <div class="card-title">Macro & Factor Views</div>
+        <div class="card-desc">Macro regimes, ETF valuations, cross-asset signals.</div>
+      </a>
+
+      <a href="#methods" class="card">
+        <div class="card-label">Track 03</div>
+        <div class="card-title">Methods & Frameworks</div>
+        <div class="card-desc">Monte Carlo, valuation models, process docs.</div>
+      </a>
+    </section>
+  </main>
+
+  <!-- STAR WARS DOOR -->
+  <div class="door-overlay" id="doorOverlay">
+    <div class="door-track">
+      <div class="door-panel left"></div>
+      <div class="door-panel right"></div>
+
+      <div class="door-center">
+        <div class="intro-line">A long time ago in a market far, far away…</div>
+        <div class="door-title">Restricted Research Bay</div>
+        <p class="door-subtitle">Click to open the blast doors.</p>
+        <div class="lock-circle">🔒</div>
+        <button class="door-btn" id="doorBtn">Unlock Hub</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById("doorOverlay");
+    const button = document.getElementById("doorBtn");
+    const hub = document.getElementById("hub");
+
+    function openDoor() {
+      overlay.classList.add("open");
+      hub.classList.add("revealed");
+    }
+
+    button.addEventListener("click", openDoor);
+    overlay.addEventListener("click", openDoor);
+  </script>
+</body>
+</html>
