@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact – Ahmadi Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="logo-row">
+          <a href="index.html">
+            <img src="public/logo.png" alt="Ahmadi Research Logo" class="logo-img" />
+          </a>
+        </div>
+        <nav class="nav-links">
+          <a href="research.html">Research</a>
+          <a href="approach.html">Approach</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="section section--light">
+      <div class="container">
+        <div class="section-title-row">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h1 class="section-title">Get in touch</h1>
+          </div>
+        </div>
+
+        <p style="max-width:600px; color:var(--text-muted); font-size:0.95rem;">
+          If you’d like to talk about research, roles, or collaboration, feel free to reach out. This site is a personal
+          project, so I’m always open to feedback on the work and how I can improve it.
+        </p>
+
+        <p style="margin-top:16px; font-size:0.9rem;">
+          → Email:
+          <a href="mailto:mahmad100@tufts.edu" style="color:var(--blue-main); font-weight:500;">
+            mahmad100@tufts.edu
+          </a>
+        </p>
+
+        <p style="margin-top:8px; font-size:0.9rem;">
+          → LinkedIn:
+          <a href="https://www.linkedin.com/in/mo-ahmadi-" target="_blank" rel="noreferrer"
+             style="color:var(--blue-main); font-weight:500;">
+            linkedin.com/in/mo-ahmadi-
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Ahmadi Research. Nothing here is investment advice.</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="approach.html">Approach</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
