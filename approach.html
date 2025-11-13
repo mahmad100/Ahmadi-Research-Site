@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Approach – Ahmadi Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="logo-row">
+          <a href="index.html">
+            <img src="public/logo.png" alt="Ahmadi Research Logo" class="logo-img" />
+          </a>
+        </div>
+        <nav class="nav-links">
+          <a href="research.html">Research</a>
+          <a href="approach.html">Approach</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="section section--dark">
+      <div class="container">
+        <div class="section-title-row">
+          <div>
+            <div class="section-kicker">Approach</div>
+            <h1 class="section-title" style="color:#e5e7eb;">How I think about research</h1>
+          </div>
+        </div>
+
+        <div class="streams-grid">
+          <div class="stream-box">
+            <h3 class="stream-title">Three main streams</h3>
+            <p class="stream-sub">
+              Most projects fall into three buckets that talk to each other: company work, macro context, and process.
+            </p>
+            <ul class="stream-list">
+              <li>
+                <span class="dot"></span>
+                <span>Single-name deep dives: unit economics, competitive dynamics, and valuation versus peers.</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>Macro + factor work: regimes, rates, style rotations, and sector/region spreads.</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>ETF and index analysis: building simple ways to express views without stock picking.</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>Methods notes: Monte Carlo setups, sanity checks, and process frameworks.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="stream-right">
+            <h4>Principles</h4>
+            <p>
+              Start with the business: customers, cash flows, and competitive moat. Then layer macro and sentiment on
+              top, rather than letting the narrative lead.
+            </p>
+            <p style="margin-top:10px;">
+              I try to keep a clear distinction between “great company” and “great stock”, think in probabilities, and
+              make sure each conclusion has a traceable path back to data, assumptions, and scenarios.
+            </p>
+            <p style="margin-top:10px;">
+              Tools are mostly Python and Excel. The goal is not fancy models but transparent ones that make it easy to
+              see where things break.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Ahmadi Research. Nothing here is investment advice.</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
