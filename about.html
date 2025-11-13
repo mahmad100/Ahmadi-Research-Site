@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About – Ahmadi Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="logo-row">
+          <a href="index.html">
+            <img src="public/logo.png" alt="Ahmadi Research Logo" class="logo-img" />
+          </a>
+        </div>
+        <nav class="nav-links">
+          <a href="research.html">Research</a>
+          <a href="approach.html">Approach</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="section section--light">
+      <div class="container">
+        <div class="section-title-row" style="margin-bottom:20px;">
+          <div>
+            <div class="section-kicker">About</div>
+            <h1 class="section-title">Mohammad Hadi Ahmadi</h1>
+          </div>
+        </div>
+
+        <div class="about-compact">
+          <div class="about-avatar">
+            <img src="public/headshot.png" alt="Mohammad Ahmadi" />
+          </div>
+          <div>
+            <p>
+              I’m a Tufts University graduate with a dual degree in economics and sociology. I’ve worked across
+              investment banking, consulting, and private equity, mostly around M&A, deal sourcing, and capital raising.
+            </p>
+            <p style="margin-top:10px;">
+              Ahmadi Research is how I keep sharpening my thinking on businesses, macro regimes, and portfolio
+              construction. I like asking “what has to be true for this to be a good investment?” and then testing that
+              against data and scenarios.
+            </p>
+            <p style="margin-top:10px; font-size:0.86rem;">
+              → <a href="mailto:mahmad100@tufts.edu" style="color:var(--blue-main); font-weight:500;">Email</a> ·
+              <a href="https://www.linkedin.com/in/mo-ahmadi-" target="_blank" rel="noreferrer"
+                 style="color:var(--blue-main); font-weight:500;">LinkedIn</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Ahmadi Research. Nothing here is investment advice.</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="approach.html">Approach</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
