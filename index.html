@@ -262,31 +262,66 @@
     </footer>
   </div>
 
+  <!-- Door sound -->
+  <audio id="doorSound" src="public/openingring.wav" preload="auto"></audio>
+
   <script>
-    // Intro door logic – nicer, slower, only once
+    // Intro door logic – play once per browser + sound on open
     const doorOverlay = document.getElementById("doorOverlay");
     const doorFrame = document.getElementById("doorFrame");
     const doorBtn = document.getElementById("doorBtn");
+    const doorSound = document.getElementById("doorSound");
 
     let doorOpened = false;
 
     function openDoor() {
       if (doorOpened) return;
       doorOpened = true;
+
+      // Play the opening ring sound
+      if (doorSound) {
+        doorSound.currentTime = 0;
+        doorSound.play().catch(() => {
+          // ignore autoplay / permission issues
+        });
+      }
+
+      // Remember that the intro has been seen
+      try {
+        localStorage.setItem("ahmadiIntroSeen", "true");
+      } catch (e) {
+        // localStorage might be blocked; fail silently
+      }
+
       doorOverlay.classList.add("open");
     }
 
-    doorBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      openDoor();
-    });
+    // Has this visitor already seen the intro?
+    let hasSeenIntro = false;
+    try {
+      hasSeenIntro = localStorage.getItem("ahmadiIntroSeen") === "true";
+    } catch (e) {
+      hasSeenIntro = false;
+    }
 
-    doorFrame.addEventListener("click", () => {
-      openDoor();
-    });
+    if (hasSeenIntro) {
+      // Skip the door entirely on reload / return visits
+      doorOverlay.style.display = "none";
+    } else {
+      // First time: enable door interactions
+      doorBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openDoor();
+      });
+
+      doorFrame.addEventListener("click", () => {
+        openDoor();
+      });
+    }
 
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+
