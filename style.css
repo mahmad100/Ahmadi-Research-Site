@@ -517,13 +517,14 @@ a {
 }
 
 .about-avatar {
-  width: 90px;
-  height: 90px;
+  width: 120px;     /* bigger */
+  height: 120px;    /* bigger */
   border-radius: 999px;
   overflow: hidden;
   border: 2px solid rgba(15, 118, 178, 0.3);
-  background: #cbd5f5;
+  background: #cbd5ff;
 }
+
 
 .about-compact p {
   color: var(--text-muted);
