@@ -316,7 +316,9 @@ a {
   box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
   animation: statusPulse 2.4s ease-out infinite;
 }
-
+.hero-right-title {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
 
 .hero-right-text {
   font-size: 0.86rem;
@@ -332,12 +334,6 @@ a {
   font-size: 0.75rem;
 }
 
-.hero-tag {
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  background: rgba(15, 23, 42, 0.7);
-}
 .hero-tag {
   padding: 4px 10px;
   border-radius: 999px;
@@ -564,35 +560,11 @@ a {
   background: #cbd5ff;
 }
 
-
 .about-compact p {
   color: var(--text-muted);
   line-height: 1.7;
 }
-/* About / contact */
 
-.about-compact {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 16px;
-  align-items: center;
-  font-size: 0.9rem;
-  color: #111827;
-}
-
-.about-avatar {
-  width: 120px;     /* bigger */
-  height: 120px;    /* bigger */
-  border-radius: 999px;
-  overflow: hidden;
-  border: 2px solid rgba(15, 118, 178, 0.3);
-  background: #cbd5ff;
-}
-
-.about-compact p {
-  color: var(--text-muted);
-  line-height: 1.7;
-}
 
 /* NEW: icon row for email / LinkedIn */
 .about-links {
