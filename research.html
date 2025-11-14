@@ -102,8 +102,32 @@
     </footer>
   </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<footer>
+  <!-- your footer stuff -->
+</footer>
+</div>
+
+<!-- Footer year -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<!-- Navbar scroll logic -->
+<script>
+  const header = document.querySelector(".site-header");
+
+  function updateNavState() {
+    if (window.scrollY <= 5) {
+      header.classList.add("nav-top");      // pure white at top
+    } else {
+      header.classList.remove("nav-top");   // liquid glass when scrolling
+    }
+  }
+
+  window.addEventListener("scroll", updateNavState);
+  window.addEventListener("load", updateNavState);
+</script>
+
 </body>
 </html>
+
