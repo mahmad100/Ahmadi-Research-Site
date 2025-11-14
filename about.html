@@ -74,3 +74,20 @@
   </script>
 </body>
 </html>
+
+<script>
+  const header = document.querySelector(".site-header");
+
+  function updateNavState() {
+    if (window.scrollY <= 5) {
+      header.classList.add("nav-top");      // pure white
+    } else {
+      header.classList.remove("nav-top");   // liquid glass
+    }
+  }
+
+  window.addEventListener("scroll", updateNavState);
+  window.addEventListener("load", updateNavState);
+</script>
+
+
