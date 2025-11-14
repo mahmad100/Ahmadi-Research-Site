@@ -71,5 +71,23 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+  <!-- Your navbar scroll script -->
+  <script>
+    const header = document.querySelector(".site-header");
+
+    function updateNavState() {
+      if (window.scrollY <= 5) {
+        header.classList.add("nav-top");      // pure white
+      } else {
+        header.classList.remove("nav-top");   // liquid glass
+      }
+    }
+
+    window.addEventListener("scroll", updateNavState);
+    window.addEventListener("load", updateNavState);
+  </script>
+
 </body>
 </html>
+
