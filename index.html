@@ -350,27 +350,37 @@
     }
 
     // Has this visitor already seen the intro?
-    let hasSeenIntro = false;
-    try {
-      hasSeenIntro = localStorage.getItem("ahmadiIntroSeen") === "true";
-    } catch (e) {
-      hasSeenIntro = false;
-    }
+   function shouldShowDoor() {
+  // already shown in this tab session
+  try {
+    if (sessionStorage.getItem("ahmadiIntroSeen") === "true") return false;
+  } catch (e) {}
 
-    if (hasSeenIntro) {
-      // Skip the door entirely on reload / return visits
-      doorOverlay.style.display = "none";
-    } else {
-      // First time: enable door interactions
-      doorBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openDoor();
-      });
+  // do not show on refresh
+  const navEntry = performance.getEntriesByType("navigation")[0];
+  if (navEntry && navEntry.type === "reload") return false;
 
-      doorFrame.addEventListener("click", () => {
-        openDoor();
-      });
-    }
+  // do not show when navigating from another page on this site
+  if (document.referrer && document.referrer.startsWith(window.location.origin)) {
+    return false;
+  }
+
+  return true;
+}
+
+if (!shouldShowDoor()) {
+  doorOverlay.style.display = "none";
+  try {
+    sessionStorage.setItem("ahmadiIntroSeen", "true");
+  } catch (e) {}
+} else {
+  doorBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openDoor();
+  });
+
+  doorFrame.addEventListener("click", openDoor);
+}
 
       // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
