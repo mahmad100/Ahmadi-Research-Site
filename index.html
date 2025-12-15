@@ -339,14 +339,16 @@
         });
       }
 
-      // Remember that the intro has been seen
-      try {
-        localStorage.setItem("ahmadiIntroSeen", "true");
-      } catch (e) {
-        // localStorage might be blocked; fail silently
-      }
+        // Remember that the intro has been seen (this tab only)
+        try {
+          sessionStorage.setItem("ahmadiIntroSeen", "true");
+        } catch (e) {
+          // sessionStorage might be blocked; fail silently
+        }
+        
+        doorOverlay.classList.add("open");
+        document.body.classList.remove("no-scroll");
 
-      doorOverlay.classList.add("open");
     }
 
     // Has this visitor already seen the intro?
