@@ -163,7 +163,6 @@
               </div>
             </div>
           </a>
-          </a>
 <!-- AI Bubble – coming soon -->
         <div class="work-card">
           <a href="research.html" class="work-card-inner">
@@ -369,13 +368,13 @@
 
   return true;
 }
-
 if (!shouldShowDoor()) {
   doorOverlay.style.display = "none";
-  try {
-    sessionStorage.setItem("ahmadiIntroSeen", "true");
-  } catch (e) {}
+  document.body.classList.remove("no-scroll");
 } else {
+  // lock scroll while the door is visible
+  document.body.classList.add("no-scroll");
+
   doorBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     openDoor();
