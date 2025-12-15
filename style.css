@@ -33,7 +33,9 @@ body {
   color: var(--text-main);
   overflow-x: hidden;
 }
-
+body.no-scroll {
+  overflow: hidden;
+}
 img {
   max-width: 100%;
   display: block;
