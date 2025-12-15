@@ -40,8 +40,8 @@
     <!-- HEADER -->
     <header class="site-header">
       <div class="site-header-inner">
-     <div class="logo-row">
-    <a href="#top" aria-label="Back to top">
+    <div class="logo-row">
+  <a href="#" class="logo-link" aria-label="Back to top">
     <img src="public/logo.png" alt="Ahmadi Research Logo" class="logo-img" />
       </a>
       </div>
@@ -391,6 +391,14 @@
     window.addEventListener("scroll", updateNavState);
     window.addEventListener("load", updateNavState);
   </script>
-
+<script>
+  const logoLink = document.querySelector(".logo-link");
+  if (logoLink) {
+    logoLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+</script>
 </body>
 </html>
